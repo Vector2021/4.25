@@ -1,0 +1,24 @@
+void Qsort(int* a, int start, int end)
+{
+	int i = start;
+	int j = end;
+	int key = a[i];
+	if (i > j)
+		return;
+	while (i < j)
+	{
+		while (i < j && a[j] >= key)
+		{
+			j--;
+		}
+		a[i] = a[j];
+		while (i < j && a[i] <= key)
+		{
+			i++;
+		}
+		a[j] = a[i];
+	}
+	a[i] = key;
+	Qsort(a, start, i - 1);
+	Qsort(a, i + 1, end);
+}
